@@ -1,0 +1,25 @@
+<html>
+
+  <head>
+    <script language="javascript">
+      setInterval(function() {
+        filename = './live?rand=' + Math.random();
+        (new Image()).src = filename;
+
+        var myImageElement = document.getElementById('latest');
+        myImageElement.src = filename
+      }, 500);
+      /*
+      setInterval(function() {
+        var myImageElement = document.getElementById('detect');
+        myImageElement.src = './detect.jpg?rand=' + Math.random();
+      }, 500);
+      */
+    </script>
+  </head>
+
+  <body>
+    <h3>Live</h3>
+    <img id="latest" src="./latest.jpg"/>
+  </body>
+</html>

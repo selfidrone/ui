@@ -1,0 +1,46 @@
+builds:
+  - binary: web_ui
+    ldflags: -s -w -X main.version={{.Version}}
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm
+    goarm:
+      - 7
+    env:
+      - CGO_ENABLED=0
+   
+    hooks:
+      pre: make all_arch
+dockers:
+  - 
+    binary: web_ui_tmp
+    image: quay.io/selfidrone/web_ui
+    goos: linux
+    goarch: amd64
+    dockerfile: Dockerfile.deploy
+    tag_templates: 
+      - "{{ .Tag }}"
+      - latest
+    extra_files:
+      - bin/web_ui
+      - assets
+      - public
+      - database.yml
+
+  - 
+    binary: web_ui_tmp
+    image: quay.io/selfidrone/web_ui
+    goos: linux
+    goarch: arm
+    goarm: 7
+    dockerfile: Dockerfile.deploy
+    tag_templates: 
+      - "arm7-{{ .Tag }}"
+      - "arm7-{{ .Version }}"
+    extra_files:
+      - bin_arm/web_ui
+      - assets
+      - public
+      - database.yml
