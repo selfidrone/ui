@@ -32,5 +32,5 @@ run_docker:
 	docker run -it -p 4000:4000 ${NAMESPACE}/drone-live:latest -nats nats://nats.drone.demo.gs:4222 -source /home/dronelive/
 
 all_arch:
-	buffalo build -o bin/web_ui
+	GOOS=linux buffalo build -o bin/web_ui
 	GOOS=linux GOARCH=arm GOARM=6 buffalo build -o bin_arm/web_ui

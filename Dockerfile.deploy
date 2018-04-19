@@ -10,11 +10,6 @@ RUN mkdir /Users
 COPY ./web_ui /home/ui/
 RUN chmod +x /home/ui/web_ui
 
-COPY ./assets /home/ui/
-COPY ./public /home/ui/
-
-COPY ./database.yml /home/ui/database.yml
-
 USER ui
 
 ENTRYPOINT ["/home/ui/web_ui"]

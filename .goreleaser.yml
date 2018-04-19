@@ -1,5 +1,5 @@
 builds:
-  - binary: web_ui
+  - binary: web_ui_tmp
     ldflags: -s -w -X main.version={{.Version}}
     goos:
       - linux
@@ -25,9 +25,6 @@ dockers:
       - latest
     extra_files:
       - bin/web_ui
-      - assets
-      - public
-      - database.yml
 
   - 
     binary: web_ui_tmp
@@ -41,6 +38,3 @@ dockers:
       - "arm7-{{ .Version }}"
     extra_files:
       - bin_arm/web_ui
-      - assets
-      - public
-      - database.yml
